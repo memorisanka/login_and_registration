@@ -2,6 +2,10 @@ from django.shortcuts import render
 from .forms import UserRegisterForm
 from django.contrib import messages
 
+
+def home(request):
+    return render(request, 'users/home.html', {'title': 'Welcome'})
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -14,3 +18,8 @@ def register(request):
         form = UserRegisterForm()
 
     return render(request, 'users/register.html', {'form': form})
+
+
+def profile(request):
+    return render(request, 'users/profile.html', {})
+

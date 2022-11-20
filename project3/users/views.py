@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib import messages
 
@@ -13,13 +13,13 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f"Account has been created. Welcome, {username}!")
-        #     redirect do strony po zalogowaniu
+            return redirect('profile')
     else:
         form = UserRegisterForm()
 
     return render(request, 'users/register.html', {'form': form})
 
 
-def profile(request):
-    return render(request, 'users/profile.html', {})
+# def profile(request):
+#     return render(request, 'users/profile.html', {})
 

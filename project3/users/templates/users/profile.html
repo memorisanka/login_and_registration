@@ -1,0 +1,8 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<h2><b>Hello, {{user}}</b></h2><br><br>
+You’ve been with us since: {{user.date_joined.day}}/{{user.date_joined.month}}/{{user.date_joined.year}}
+
+{% endblock %}

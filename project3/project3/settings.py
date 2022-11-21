@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "crispy_forms",
+    "django-extensions",
 ]
 
 MIDDLEWARE = [
@@ -85,14 +86,13 @@ WSGI_APPLICATION = "project3.wsgi.application"
 # }
 
 DATABASES = {
-
-'default': {
-'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': os.getenv('DB_NAME'),
-'USER': os.getenv('DB_USER'),
-'PASSWORD': os.getenv('DB_PASSWORD'),
-'PORT': os.getenv('DB_PORT'),
-}
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "PORT": os.getenv("DB_PORT"),
+    }
 }
 
 
@@ -137,4 +137,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"

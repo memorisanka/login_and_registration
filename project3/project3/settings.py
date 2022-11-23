@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "crispy_forms",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -85,14 +86,13 @@ WSGI_APPLICATION = "project3.wsgi.application"
 # }
 
 DATABASES = {
-
-'default': {
-'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': os.getenv('DB_NAME'),
-'USER': os.getenv('DB_USER'),
-'PASSWORD': os.getenv('DB_PASSWORD'),
-'PORT': os.getenv('DB_PORT'),
-}
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "PORT": os.getenv("DB_PORT"),
+    }
 }
 
 
@@ -137,4 +137,17 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+
+# EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
